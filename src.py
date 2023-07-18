@@ -14,17 +14,19 @@ def database_checker(picture):
     pass
 
 def patch_parser(file_name, desired_file_name):
-    #takes path of unparsed_data
+    #takes path of unparsed_data || this is complete
     #all images of unparsed_data will have backgrounds removed and will ask for a name
     #all parsed_data will be put in the available folder
-    #unparsed_data will be purged
+    #unparsed_data will be purged - to be completed among last steps for testing purposes
     input_perfect = file_name
     output_perfect = desired_file_name
     input = Image.open(input_perfect)
     print(input)
-    input.save(r'data/unparsed_data/20230718_091148.png')
+    input.save(r'data/unparsed_data/20230718_090942.png')
     output = remove(input)
-    output.save(output_perfect)
+    imageBox = output.getbbox()
+    output_boxed = output.crop(imageBox)
+    output_boxed.save(output_perfect)
 
 def debugger():
     #unsure of how to implement, will ask for instruction later
@@ -34,4 +36,4 @@ def debugger():
 
 
 if __name__ == "__main__":
-    patch_parser('data/unparsed_data/20230718_091148.jpg', 'data/parsed_data/chimera_patch.png')
+    patch_parser('data/unparsed_data/20230718_090942.jpg', 'data/parsed_data/chimera_patch.png')
